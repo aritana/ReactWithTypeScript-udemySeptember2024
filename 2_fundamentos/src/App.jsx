@@ -5,6 +5,8 @@ import Parent from './components/Parent'
 import Description from './components/Description'
 import Counter from './components/Counter'
 import UserInfoForm from './components/UserInfoForm'
+import Button from './components/Button'
+import ParentFunction from './components/ParentFunction'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Description nome="Noara" idade={37} />
       <Counter />
       <UserInfoForm />
+      <Button />
+      <ParentFunction />
       {
         /*Comentario: Criação de Componentes*/
       }
