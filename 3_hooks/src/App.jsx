@@ -9,6 +9,8 @@ import Contador from './components/Contador'
 import DisplayWindowSize from './components/DisplayWindowSize'
 import Container from './components/Container'
 import PerfilDeUsuario from './components/PerfilDeUsuario'
+import CalculoPesado from './components/CalculoPesado'
+import ContadorCallback from './components/ContadorCallback'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -38,7 +40,7 @@ function App() {
       {/* Slots e children props*/}
 
       <hr />
-      <Container> 
+      <Container>
         <h1>Título da Seção</h1>
         <p>Este é o meu subtítulo</p>
       </Container>
@@ -46,9 +48,15 @@ function App() {
       {/*Sincronizar o estado com props*/}
 
       <hr />
-      <PerfilDeUsuario usuarioId={1}/>
+      <PerfilDeUsuario usuarioId={1} />
 
       <hr />
+      {/*useMemo: valores e useCallback: funcoes*/}
+      <CalculoPesado numero={5} />
+
+      <hr />
+      <ContadorCallback />
+
     </>
   )
 }
