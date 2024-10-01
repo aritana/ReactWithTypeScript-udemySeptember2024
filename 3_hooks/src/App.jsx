@@ -8,6 +8,7 @@ import ValorDoContexto from './components/ValorDoContexto'
 import Contador from './components/Contador'
 import DisplayWindowSize from './components/DisplayWindowSize'
 import Container from './components/Container'
+import PerfilDeUsuario from './components/PerfilDeUsuario'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -42,6 +43,12 @@ function App() {
         <p>Este é o meu subtítulo</p>
       </Container>
 
+      {/*Sincronizar o estado com props*/}
+
+      <hr />
+      <PerfilDeUsuario usuarioId={1}/>
+
+      <hr />
     </>
   )
 }

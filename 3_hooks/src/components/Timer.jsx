@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 function Timer() {
     const [segundos, setSegundos] = useState(0);
+    
     useEffect(() => {
         const intervalId = setInterval(() => {
             setSegundos((prevSegundos) => prevSegundos + 1)
