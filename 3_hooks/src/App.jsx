@@ -5,6 +5,7 @@ import Timer from './components/Timer'
 import ComponenteFilho from './components/ComponenteFilho'
 import { MeuContextoProvider } from './contexts/MeuContext'
 import ValorDoContexto from './components/ValorDoContexto'
+import Contador from './components/Contador'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,11 @@ function App() {
         <ComponenteFilho />
         <ValorDoContexto />
       </MeuContextoProvider>
+           
+      {/* useReducer: estados mais complexos que os utilizados anteriormente.*/}
+      <hr />
+      <Contador />
+      
 
     </>
   )
