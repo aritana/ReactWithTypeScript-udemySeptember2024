@@ -6,6 +6,8 @@ import ComponenteFilho from './components/ComponenteFilho'
 import { MeuContextoProvider } from './contexts/MeuContext'
 import ValorDoContexto from './components/ValorDoContexto'
 import Contador from './components/Contador'
+import DisplayWindowSize from './components/DisplayWindowSize'
+import Container from './components/Container'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,11 +26,21 @@ function App() {
         <ComponenteFilho />
         <ValorDoContexto />
       </MeuContextoProvider>
-           
+
       {/* useReducer: estados mais complexos que os utilizados anteriormente.*/}
       <hr />
       <Contador />
-      
+
+      {/* custom hook - monitorar o tamanho da Janela*/}
+      <hr />
+      <DisplayWindowSize />
+      {/* Slots e children props*/}
+
+      <hr />
+      <Container> 
+        <h1>Título da Seção</h1>
+        <p>Este é o meu subtítulo</p>
+      </Container>
 
     </>
   )
