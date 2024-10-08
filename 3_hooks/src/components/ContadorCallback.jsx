@@ -14,8 +14,8 @@ const ContadorCallback = () => {
     }, [])
     return (
         <div>
-            <p>Contador Callback: ontagem: {contador}</p>
-            <Botao onClick={incrementar}>Incrementar</Botao>
+            <p>Contador Callback: contagem: {contador}</p>
+            <Botao onClick={incrementar}>Incrementar!</Botao>
         </div>
     )
 }
