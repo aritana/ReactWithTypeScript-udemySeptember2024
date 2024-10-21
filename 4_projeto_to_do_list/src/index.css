@@ -23,6 +23,10 @@ ul {
   width: 480px;
 }
 
+li span{
+  cursor:pointer;
+}
+
 li {
   background-color: #FFF;
   border: 1px solid #DDD;
