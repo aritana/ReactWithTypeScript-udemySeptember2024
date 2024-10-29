@@ -1,30 +1,54 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const PostForm = ({onSuccess}) => {
-    const [title, setTitle] = useState("");
-    const [body, setBody] = useState("");
+const PostForm = ({ onSuccess, post }) => {
+    const [title, setTitle] = useState(post?.title || "");
+    const [body, setBody] = useState(post?.body || "");
 
-    const handleSumit = async (e) => {
+    useEffect(() => {
+        if (post) {
+            setTitle(post.title);
+            setBody(post.body);
+        }
+    }, [post]);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const newPost = { title, body, userId: 1 };
 
         try {
+            if (post) {
+                const response = await axios.
+                    put(`https://jsonplaceholder.typicode.com/posts/${post.id}`, newPost);
+                onSuccess(response.data, "update")
+            } else {
+                const response = await axios.
+                    post("https://jsonplaceholder.typicode.com/posts", newPost);
+                onSuccess(response.data, "add")
+            }
 
-            const response = await axios.post("https://jsonplaceholder.typicode.com/posts", newPost);
-            //adicionar na lista
-            onSuccess(response.data,"add")
-
+            setTitle("");
+            setBody("");
         } catch (error) {
+            console.log("Erro ao enviar postagens: ", error);
+        }
+    }
 
-            console.log("Erro ao enviar postagens: ", error)
-
+    const handleDelete = async () => {
+        try {
+            await axios.
+                delete(`https://jsonplaceholder.typicode.com/posts/${post.id}`);
+            onSuccess(post, "delete");
+            setTitle("");
+            setBody("");
+        } catch (error) {
+            console.log("Erro ao deletar postagem: ", error);
         }
     }
 
     return (
-        <form onSubmit={handleSumit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <input type="text"
                     value={title}
@@ -39,6 +63,9 @@ const PostForm = ({onSuccess}) => {
                 </textarea>
             </div>
             <button type="submit">Enviar</button>
+            {post && (
+                <button type="button" onClick={handleDelete}>Excluir</button>
+            )}
         </form>
     )
 }
