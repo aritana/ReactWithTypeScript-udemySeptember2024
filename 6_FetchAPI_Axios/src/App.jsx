@@ -8,6 +8,7 @@ import AxiosPost from './components/AxiosPost'
 import PostForm from './components/PostForm'
 import PostManager from './components/PostManager'
 import PostLoader from './components/PostLoader'
+import PostView from './components/PostView'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -35,7 +36,10 @@ function App() {
         <div>
           <Link to="/post/999">Carregar Post 999</Link>
         </div>
-
+        {/*4 - Custom Hook com API*/}
+        <div>
+          <Link to="/post/view/2">Carregar Post 2</Link>
+        </div>
         <Routes>
           <Route path="/fetch-posts" element={<FetchPost />} />
           <Route path="/axios-posts" element={<AxiosPost />} />
@@ -43,6 +47,8 @@ function App() {
           <Route path='/posts' element={<PostManager />} />
           {/*3 - Tratamento de erros */}
           <Route path='/post/:postId' element={<PostLoader />} />
+          {/*4 - Custom hook com API */}
+          <Route path='/post/view/:postId' element={<PostView/>}/>
         </Routes>
       </BrowserRouter>
     </>
